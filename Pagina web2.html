@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PROYECTO WEB</title>
+	<link rel="stylesheet" type="text/css" href="CSS/style.CSS"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+
+</head>
+<h1> BIENVENIDO A MI PROYECTO WEB </h1>
+<body>
+	<header class="header-container">
+		<div class="logo">
+			<i class="fa-solid fa-square-plus" style="font-size:40px; color: #00a8cc";></i>
+		</div>
+		<div class="header-derecha">
+			<nav class="menu">
+				<a href="#" class="active"></a>
+				<a href="#"> INICIO</a>
+				<a href="login.html"> INICIAR SESIÓN</a>
+				<a href="registro.html"> REGISTRARSE</a>
+				<a href="#"> CONTACTO</a>
+			</nav>
+			<div class="slider-container">
+				<button class="flecha-btn prev">&#10094;</button>
+				<button class="flecha-btn next">&#10095;</button>
+				<div class="slider-wrapper">
+					<div class="slide"><img src="slider/foto8.jpg" alt="foto 8"></div>
+					<div class="slide"><img src="slider/foto4.jpg" alt="foto 4"></div>
+					<div class="slide"><img src="slider/foto7.jpg" alt="foto 7"></div>
+					<div class="slide"><img src="slider/foto9.jpg" alt="foto 9"></div>
+					<div class="slide"><img src="slider/foto1.jpg" alt="foto 1"></div>
+				</div>
+				<button class="flecha-btn next">&#10095;></button>
+				<div class="puntos-container">
+					<span class="punto activo"></span>
+					<span class="PUNTO"></span>
+					<span class="PUNTO"></span>
+				</div>
+			</div>
+			<section class="info-columnas">
+				<div class="columna">
+					<i class="fa-solid fa-heart-pulse icono-col"></i>
+					<h3>NUESTROS VALORES</h3>
+					<p>Disciplina en el desarrollo, compromiso con la optimización de código, constante aprendizaje y una sólida ética profesional para crear soluciones tecnológicas eficientes</p>
+				</div>
+				<div class="columna">
+					<i class="fa-solid fa-bullseye icono-col"></i>
+					<h3>NUESTRA MISIÓN</h3>
+					<p>Adquirir y aplicar conocimientos avanzados en ingeniería, lógica y desarrollo de sofware para diseñar sistemas innovadores que resuelvan problemas del mundo real</p>
+				</div>
+				<div class="columna">
+					<i class="fa-solid fa-eye icono-col"></i>
+					<h3>NUESTRA VISIÓN</h3>
+					<p>Convertirme en un Ingeniero en Sistemas líder en Guatemala, capaz de dirigir proyectos tecnológicos de alto impacto y aportar al desarrollo digital del país</p>
+
+				</div>
+			</section>
+			<footer class="main-footer">
+				<div class="footer-contenido">
+					<div class="footer-enlaces">
+						<a href="#">Inicio</a>
+						<a href="#">Sobre mí</a>
+						<a href="#">Proyecto</a>
+						<a href="#">Cursos</a>
+						<a href="#">Contacto</a>
+					</div>
+					<div class="footer-redes">
+						<a href="https://facebook.com" target="_blank "><i class="fa-brands fa-facebook"></i></a>
+						<a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+						<a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+						<a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+					</div>
+				</div>
+				<div class="footer-derechos">
+					<p>&copy; 2026 Hugo-Estudiante de Ingeniería en Sistemas</p>
+					<p>INTRODUCCIÓN A LOS SISTEMAS DER COMPUTO</p>
+				</div>
+			</footer>
+			<script>
+				const wrapper = document.querySelector('.slider-wrapper');
+const slides = document.querySelectorAll('.slide');
+const btnPrev = document.querySelector('.prev');
+const btnNext = document.querySelector('.next');
+
+let contador = 0;
+const totalSlides = slides.length;
+
+function moverSlides() {
+    let porcentaje = 100 / totalSlides;
+    wrapper.style.transform = "translateX(-" + (contador * porcentaje) + "%)";
+}
+
+function avanzarAutomatico() {
+    contador++;
+    if (contador >= totalSlides) {
+        contador = 0;
+    }
+    moverSlides();
+}
+
+let temporizador = setInterval(avanzarAutomatico, 3000);
+if (btnNext) {
+    btnNext.addEventListener('click', () => {
+        clearInterval(temporizador); 
+        avanzarAutomatico();
+        temporizador = setInterval(avanzarAutomatico, 3000); 
+    });
+}
+if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+        clearInterval(temporizador);
+        contador--;
+        if (contador < 0) {
+            contador = totalSlides - 1; 
+        }
+        moverSlides();
+        temporizador = setInterval(avanzarAutomatico, 3000);
+    });
+}
+</script>
+			
+
+</body>
+</html>
